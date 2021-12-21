@@ -8,7 +8,7 @@ import { EventService } from "./shared/event.service";
     selector:'events-list',
     template:`
     <div>
-        <h1>Upcoming Angular Events</h1>
+        <h1>Upcoming Angular Events1</h1>
         <hr />
         <div class="row">
           <div class="col-md-5" *ngFor="let event of events">
