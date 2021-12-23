@@ -8,7 +8,8 @@ import {
   EventThumbnailComponent,
   EventListResolver,
   EventsListComponent,
-  EventService
+  EventService,
+  CreateSessionComponent
 } from './events/index'
 
 import { ToastrService } from './common/toastr.service';
@@ -17,10 +18,13 @@ import { EventsAppComponent } from './events-app.component';
 import { NavBarComponent } from './nav/navbar.component';
 import { appRoutes } from './routes';
 import { AuthService } from './user/auth.service';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
@@ -30,7 +34,8 @@ import { AuthService } from './user/auth.service';
     NavBarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Error404Component
+    Error404Component,
+    CreateSessionComponent
   ],
   providers: [
     EventService,
