@@ -11,7 +11,10 @@ import {
   EventService,
   CreateSessionComponent,
   SessionListComponent,
-  DurationPipe
+  DurationPipe,
+  UpvoteComponent,
+  VoterService,
+  LocationValidator
 } from './events/index'
 
 import { TOASTR_TOKEN,Toastr,JQ_TOKEN,CollapsibleWellComponent,SimpleModalComponent,ModalTriggerDirective } from './common/index';
@@ -46,7 +49,9 @@ let jQuery:Toastr=(window as { [key: string]: any })["$"];
     CollapsibleWellComponent,
     DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent,
+    LocationValidator
   ],
   providers: [
     EventService,
@@ -54,6 +59,7 @@ let jQuery:Toastr=(window as { [key: string]: any })["$"];
     {provide:JQ_TOKEN,useValue:jQuery},
     EventRouteActivator,
     EventListResolver,
+    VoterService,
     AuthService,
     {
       provide:'canDeactivateCreateEvent',
