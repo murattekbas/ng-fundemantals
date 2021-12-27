@@ -27,10 +27,11 @@ export class EventDetailsComponent implements OnInit{
     ngOnInit(): void {
 
         //Kendine yönlenen routelarda problem yaşanıyordu. Sadece route parametresi değişiyorsa state değişmez
-        this.route.params.forEach((params:Params)=>{
-            this.event=this.eventService.getEvent(+params['id']);
-            this.addMode=false
-        })
+        this.route.data.forEach((data)=>{
+            this.event=data['event'];
+            this.addMode=false;
+            });
+            
         /* this.event=this.eventService.getEvent(+this.route.snapshot.params['id']);
         console.log(this.event) */
     }
@@ -42,7 +43,7 @@ export class EventDetailsComponent implements OnInit{
     saveNewSession(session:ISession){
         session.id=566
         this.event?.sessions.push(session);
-        this.eventService.updateEvent(this.event!)
+        this.eventService.saveEvent(this.event!).subscribe();
         this.addMode=false
 
     }
