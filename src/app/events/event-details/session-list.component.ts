@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
 import { IsActiveMatchOptions } from "@angular/router";
 import { AuthService } from "src/app/user/auth.service";
+import { IUser } from "src/app/user/user.model";
 import { ISession } from "..";
 import { VoterService } from "./voter.service";
 
@@ -29,10 +30,10 @@ export class SessionListComponent implements OnChanges{
 
     toggleVote(session:ISession){
         if(this.userHasVoted(session)){
-            this.voterService.deleteVoter(this.eventId,session,this.auth.currentUser.userName);
+            this.voterService.deleteVoter(this.eventId,session,(this.auth.currentUser as IUser).userName);
 
         } else {
-            this.voterService.addVoter(this.eventId,session,this.auth.currentUser.userName);
+            this.voterService.addVoter(this.eventId,session,(this.auth.currentUser as IUser).userName);
         }
 
         if (this.sortBy==='votes')
@@ -40,7 +41,7 @@ export class SessionListComponent implements OnChanges{
     }
 
     userHasVoted(session:ISession){
-        return this.voterService.userHasVoted(session,this.auth.currentUser.userName);
+        return this.voterService.userHasVoted(session,(this.auth.currentUser as IUser).userName);
     }
 
     filterSessions(filter:string){
